@@ -26,10 +26,10 @@ export class SolanaWallet {
     this.walletDropdownVisible = false;
 
     this.Credit_DECIMALS = 6;
-    this.Credit_MINT_ADDRESS = "dsitAJapavcqf2UsXzP4jBz2wBC6nu3od7D45idwiSU";
+    this.Credit_MINT_ADDRESS = "";
     this.Bonk_DECIMALS = 6;
-    this.Bonk_MINT_ADDRESS = "dsitAJapavcqf2UsXzP4jBz2wBC6nu3od7D45idwiSU";
-    this.ADMIN_WALLET_ADDRESS = "CGacpojgdVcuUBZuFJqWu3eiEVcbXAxQcXXridgvFhRg";
+    this.Bonk_MINT_ADDRESS = "";
+    this.ADMIN_WALLET_ADDRESS = "";
 
     // Supported wallets
     this.supportedWallets = [
@@ -79,9 +79,7 @@ export class SolanaWallet {
    * Initialize Solana connection to the network
    */
   initConnection() {
-    const endpoint =
-      "https://divine-restless-needle.solana-devnet.quiknode.pro/8218c13e5cbcca622366abac18ce7c35555f3450";
-
+    const endpoint = ""
     try {
       this.connection = new Connection(endpoint, "confirmed");
     } catch (error) {
