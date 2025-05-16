@@ -361,6 +361,8 @@ export function preloadSprites(scene) {
     scene.load.image('cutscene_character2', '/assets/cutscenes/enter_arena/character2.png');
     scene.load.image('cutscene_character3', '/assets/cutscenes/enter_arena/character3.png');
     scene.load.image('cutscene_character5', '/assets/cutscenes/enter_arena/character5.png');
+    scene.load.image('cutscene_character6', '/assets/cutscenes/enter_arena/character6.png');
+    scene.load.image('cutscene_character4', '/assets/cutscenes/enter_arena/character4.png');
     
     // Load commercial sounds
     scene.load.audio('becomeSponsor', '/assets/sound/comercials/becomeSponsor.mp3');
@@ -578,7 +580,7 @@ export function preloadSprites(scene) {
     console.log(`Loading ${characterId} character death animation frames`);
     
     // Handle character3 and character5's different death animation file naming
-    if (characterId === 'character3' || characterId === 'character5') {
+    if (characterId === 'character3' || characterId === 'character5' || characterId === 'character6' || characterId === 'character7' || characterId === 'character4') {
       for (let i = 1; i <= 12; i++) {
         scene.load.image(`${prefix}player_death_${i}`, `${basePath}PlayerDeath/${i}.png`);
       }

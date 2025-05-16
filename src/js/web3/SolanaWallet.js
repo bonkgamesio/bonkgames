@@ -15,7 +15,7 @@ import bs58 from "bs58";
  * Solana Wallet Integration for Web3 functionality
  * Handles wallet connection, disconnection and transactions
  */
-export class SolanaWallet {
+export class SolanaWallet { 
   constructor() {
     this.connection = null;
     this.wallet = null;
@@ -26,10 +26,10 @@ export class SolanaWallet {
     this.walletDropdownVisible = false;
 
     this.Credit_DECIMALS = 6;
-    this.Credit_MINT_ADDRESS = "";
+    this.Credit_MINT_ADDRESS = import.meta.env.VITE_CREDIT_MINT_ADDRESS;
     this.Bonk_DECIMALS = 6;
-    this.Bonk_MINT_ADDRESS = "";
-    this.ADMIN_WALLET_ADDRESS = "";
+    this.Bonk_MINT_ADDRESS = import.meta.env.VITE_BONK_MINT_ADDRESS;
+    this.ADMIN_WALLET_ADDRESS = import.meta.env.VITE_ADMIN_WALLET_ADDRESS;
 
     // Supported wallets
     this.supportedWallets = [
@@ -79,7 +79,8 @@ export class SolanaWallet {
    * Initialize Solana connection to the network
    */
   initConnection() {
-    const endpoint = ""
+    const endpoint = import.meta.env.VITE_RPC_URL;
+
     try {
       this.connection = new Connection(endpoint, "confirmed");
     } catch (error) {
@@ -722,8 +723,8 @@ export class SolanaWallet {
   }
 
   /**
-   * Deposit BONK tokens to administrator wallet
-   * @param {number} amount - Amount of BONK tokens to deposit
+   * Deposit CREDIT tokens to administrator wallet
+   * @param {number} amount - Amount of CREDIT tokens to deposit
    * @returns {Promise<Object>} Transaction result
    */
   async depositCredit(amount) {
@@ -784,7 +785,7 @@ export class SolanaWallet {
       }
 
       // Show success notification
-      this.showNotification(`Successfully deposited ${amount} BONK`);
+      this.showNotification(`Successfully deposited ${amount} CREDIT`);
 
       return {
         success: true,
@@ -793,8 +794,8 @@ export class SolanaWallet {
         timestamp: new Date().toISOString(),
       };
     } catch (error) {
-      console.error("Error depositing BONK:", error);
-      this.showNotification(`Failed to deposit BONK: ${error.message}`);
+      console.error("Error depositing CREDIT:", error);
+      this.showNotification(`Failed to deposit CREDIT: ${error.message}`);
       throw error;
     }
   }
@@ -830,7 +831,7 @@ export class SolanaWallet {
       const balance = accountInfo.value.data.parsed.info.tokenAmount.uiAmount;
       return balance;
     } catch (error) {
-      console.error("Error getting BONK balance:", error);
+      console.error("Error getting CREDIT balance:", error);
       return 0;
     }
   }
